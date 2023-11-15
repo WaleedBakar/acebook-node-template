@@ -74,6 +74,13 @@ jobs:
           - name: Deploy to S3
             run: |
               aws s3 cp application_package.zip s3://waleedsbucket1
+
+          - name: Deploy to Codedeploy
+            run: |
+              aws deploy create-deployment \
+                --application-name waleed-acebook2\
+                --deployment-group waleed \
+                --s3-location bucket=waleedabucket1,key=application_package.zip,bundleType=zip
     
           
           
