@@ -47,7 +47,7 @@ jobs:
           path: deployment/application_package.zip
                   
   deploy:
-    needs: build
+    needs: test
     runs-on: ubuntu-latest
     
     steps:
