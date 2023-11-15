@@ -80,7 +80,7 @@ jobs:
               aws deploy create-deployment \
                 --application-name waleed-acebook2\
                 --deployment-group waleed \
-                --s3-location bucket=waleedabucket1,key=application_package.zip,bundleType=zip
+                --s3-location bucket=waleedbucket1,key=application_package.zip,bundleType=zip
     
           
           
