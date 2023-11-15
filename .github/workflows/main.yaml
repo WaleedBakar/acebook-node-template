@@ -31,22 +31,22 @@ jobs:
         with:
             start: npm run start:test
 
-            - name: Package Application
-            run: |
-              mkdir deployment
-              # Copy everything except files and directories listed in .gitignore
-              rsync -av --exclude-from=.gitignore --exclude=.git --exclude=deployment . deployment/  
-              cd deployment
-              npm install
-              zip -r application_package.zip .
+      - name: Package Application
+        run: |
+          mkdir deployment
+          # Copy everything except files and directories listed in .gitignore
+          rsync -av --exclude-from=.gitignore --exclude=.git --exclude=deployment . deployment/  
+          cd deployment
+          npm install
+          zip -r application_package.zip .
     
-          - name: Upload Artifact
-            uses: actions/upload-artifact@v3
-            with:
-              name: deployment-artifact
-              path: deployment/application_package.zip
-    
-      deploy:
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: deployment-artifact
+          path: deployment/application_package.zip
+      
+    deploy:
         needs: build
         runs-on: ubuntu-latest
     
